@@ -37,17 +37,22 @@ function load_summary() {
 
 function load_expenses() {
     var expenses = !!localStorage.getItem('expenses') ? $.parseJSON(localStorage.getItem('expenses')) : {};
+    var index = 0;
     $('#expense-list').html('')
     if (Object.keys(expenses).length > 0) {
         Object.keys(expenses).map(k => {
+            index = index+1;
+            console.log(index);
             var data = expenses[k]
             var item = $($('noscript#exp-item-clone').html()).clone()
             item.find('.expName').text(data.name)
             item.find('.expAmount').text(parseFloat(data.amount).toLocaleString())
             item.find('.expDate').text(data.date)
+            item.find('.serialNo').text(index)
             $('#expense-list').append(item)
             item.find('.edit-expense').click(function() {
                 var editModal = $('#editExpenseModal')
+                editModal.find('[name="serialNo"]').val(index)
                 editModal.find('[name="id"]').val(data.id)
                 editModal.find('[name="expense_name"]').val(data.name)
                 editModal.find('[name="amount"]').val(data.amount)
