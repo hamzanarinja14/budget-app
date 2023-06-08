@@ -67,7 +67,7 @@ function load_expenses() {
                     var expobj = !!localStorage.getItem('expenses') ? $.parseJSON(localStorage.getItem('expenses')) : {}
                     delete expobj[data.id]
                     localStorage.setItem('expenses', JSON.stringify(expobj));
-                    alert("Expense has been deleted successfully.");
+                    alert("Budget has been deleted successfully.");
                     location.reload();
                     end_loader()
                 }
@@ -92,7 +92,7 @@ $(function() {
         e.preventDefault()
         start_loader()
         localStorage.setItem('wallet', $('#wallet-amount').val())
-        alert("Wallet has been updated.")
+        alert("Budget has been updated.")
         location.reload()
     })
 
@@ -127,7 +127,7 @@ $(function() {
             date: _this.find('[name="bday"]').val()
         }
         localStorage.setItem('expenses', JSON.stringify(expenses));
-        alert("Expense has been added successfully.");
+        alert("Budget has been added successfully.");
         location.reload();
     })
     $('#edit-expense-form').submit(function(e) {
@@ -142,7 +142,7 @@ $(function() {
             }
             // console.log(expenses)
         localStorage.setItem('expenses', JSON.stringify(expenses));
-        alert("Expense has been updated successfully.");
+        alert("Budget has been updated successfully.");
         location.reload();
         end_loader()
     })
